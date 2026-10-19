@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,12 +47,9 @@
     }
 
     header {
-      <a class="logo" href="#">
-  <img src="unnamed.jpg" alt="Company Logo" style="height: 55px; width: auto; display: block;">
-</a>
       background: var(--brown);
       color: var(--white);
-      padding: 20px 0;
+      padding: 16px 0;
     }
 
     .navbar {
@@ -62,20 +60,26 @@
     }
 
     .logo {
-      color: var(--white);
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .logo span {
-      color: var(--orange);
+    .logo img {
+      display: block;
+      height: 58px;
+      width: auto;
+      max-width: 220px;
+      object-fit: contain;
     }
 
     .nav-link {
       color: var(--white);
       font-size: 14px;
       font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: #ff9a53;
     }
 
     .hero {
@@ -276,8 +280,13 @@
       }
 
       .navbar {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .logo img {
+        height: 48px;
+        max-width: 180px;
       }
 
       .button-outline {
@@ -294,7 +303,10 @@
 <body>
   <header>
     <div class="container navbar">
-      <a class="logo" href="#">PRIME <span>ESTATES.</span></a>
+      <a class="logo" href="#" aria-label="Prime Estates home">
+        <img src="./unnamed.jpg" alt="Company logo">
+      </a>
+
       <a class="nav-link" href="#properties">Explore Properties ↓</a>
     </div>
   </header>
@@ -393,7 +405,7 @@
           you find a property that fits your needs.
         </p>
 
-        <!-- Replace the example email with your client's real email. -->
+        <!-- Replace this example email with the client's real email. -->
         <a class="button" href="mailto:hello@example.com?subject=Property%20Enquiry">
           Make an Enquiry
         </a>
