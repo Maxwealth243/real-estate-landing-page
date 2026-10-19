@@ -1,188 +1,407 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Estates | Find Your Future</title>
+
+  <title>Prime Estates | Property & Investment</title>
+  <meta name="description" content="Explore property opportunities, discover available land, and take the next step toward property ownership.">
+
   <style>
+    :root {
+      --brown: #1a0a00;
+      --orange: #e8630a;
+      --orange-dark: #c45000;
+      --cream: #fff8f2;
+      --white: #ffffff;
+      --text: #302821;
+      --muted: #756b63;
+      --border: #eadfd5;
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      color: #222;
-      background: #fff;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
     }
 
-    header {
-      background: #172b24;
-      color: white;
-      padding: 22px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    header a {
-      color: white;
+    a {
       text-decoration: none;
     }
 
+    .container {
+      width: min(1120px, 88%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--brown);
+      color: var(--white);
+      padding: 20px 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--white);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    .nav-link {
+      color: var(--white);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
     .hero {
-      padding: 90px 8%;
-      color: white;
-      text-align: center;
-      background: linear-gradient(120deg, #172b24, #557663);
+      background:
+        radial-gradient(ellipse at top right, #71300d 0%, transparent 48%),
+        linear-gradient(120deg, #1a0a00, #351507);
+      color: var(--white);
+      padding: 100px 0 90px;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: #ff9a53;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 5vw, 58px);
-      margin: 0 0 18px;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.08;
+      margin-bottom: 24px;
+      max-width: 750px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
     }
 
     .hero p {
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 620px;
-      margin: 0 auto 28px;
+      max-width: 600px;
+      color: #e6d9cf;
+      font-size: 17px;
+      margin-bottom: 32px;
     }
 
     .button {
       display: inline-block;
-      background: #e8b45a;
-      color: #172b24;
-      padding: 15px 24px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 15px 23px;
       border-radius: 5px;
-      text-decoration: none;
+      font-size: 14px;
       font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--orange-dark);
+    }
+
+    .button-outline {
+      display: inline-block;
+      border: 1px solid #b9a79a;
+      color: var(--white);
+      padding: 14px 22px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-left: 10px;
     }
 
     section {
-      padding: 55px 8%;
+      padding: 75px 0;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 30px;
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 40px);
+      color: var(--brown);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 620px;
     }
 
     .properties {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
     }
 
     .property {
-      border: 1px solid #e5e5e5;
-      border-radius: 9px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
       overflow: hidden;
-      padding: 25px;
-      background: #fff;
+      background: var(--white);
+    }
+
+    .property-top {
+      min-height: 145px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-end;
+      background: var(--cream);
+    }
+
+    .property-top span {
+      background: var(--brown);
+      color: var(--white);
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .property-info {
+      padding: 24px;
     }
 
     .property h3 {
-      color: #172b24;
+      color: var(--brown);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .property p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
     }
 
     .price {
-      font-size: 21px;
+      color: var(--orange-dark);
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .property-link {
+      color: var(--orange-dark);
+      font-size: 14px;
       font-weight: bold;
-      color: #a66b13;
     }
 
     .about {
-      background: #f4f6f3;
+      background: var(--cream);
+    }
+
+    .about-content {
+      max-width: 760px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .contact {
+      background: var(--brown);
+      color: var(--white);
       text-align: center;
-      line-height: 1.8;
+    }
+
+    .contact h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 14px;
+    }
+
+    .contact p {
+      color: #e6d9cf;
+      margin: 0 auto 26px;
+      max-width: 580px;
     }
 
     footer {
-      background: #172b24;
-      color: white;
+      background: #100600;
+      color: #d5c8bd;
+      padding: 24px 0;
       text-align: center;
-      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 75px 0;
+      }
+
+      .properties {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .button-outline {
+        margin: 12px 0 0;
+      }
+
+      section {
+        padding: 55px 0;
+      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
-    <div class="logo">PRIME ESTATES</div>
-    <a href="#properties">Explore Properties</a>
+    <div class="container navbar">
+      <a class="logo" href="#">PRIME <span>ESTATES.</span></a>
+      <a class="nav-link" href="#properties">Explore Properties ↓</a>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <h1>Your Future Begins With the Right Property</h1>
-      <p>
-        Discover land and property opportunities designed
-        to help you take your next step towards ownership.
-      </p>
-      <a class="button" href="#properties">Explore Properties</a>
+      <div class="container hero-content">
+        <p class="eyebrow">Property. Opportunity. Ownership.</p>
+
+        <h1>Your Next Investment Starts With the <span>Right Property.</span></h1>
+
+        <p>
+          Explore property opportunities that match your goals.
+          Whether you are buying land or planning your next investment,
+          your journey starts here.
+        </p>
+
+        <a class="button" href="#properties">View Available Properties</a>
+        <a class="button-outline" href="#contact">Speak to Our Team</a>
+      </div>
     </section>
 
     <section id="properties">
-      <h2 class="section-title">Featured Properties</h2>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Find Your Opportunity</p>
+          <h2>Explore Our Properties</h2>
+          <p>
+            Discover property options for home ownership and investment.
+            Contact our team for current availability and details.
+          </p>
+        </div>
 
-      <div class="properties">
-        <article class="property">
-          <h3>Residential Land</h3>
-          <p>Find a place to build your dream home.</p>
-          <p class="price">Contact for price</p>
-          <a href="#contact">Make an enquiry</a>
-        </article>
+        <div class="properties">
+          <article class="property">
+            <div class="property-top">
+              <span>Residential</span>
+            </div>
+            <div class="property-info">
+              <h3>Residential Land</h3>
+              <p>Find a location to build a home that suits your plans.</p>
+              <div class="price">Contact for Price</div>
+              <a class="property-link" href="#contact">Enquire About This Property →</a>
+            </div>
+          </article>
 
-        <article class="property">
-          <h3>Investment Land</h3>
-          <p>Explore opportunities for your property portfolio.</p>
-          <p class="price">Contact for price</p>
-          <a href="#contact">Make an enquiry</a>
-        </article>
+          <article class="property">
+            <div class="property-top">
+              <span>Investment</span>
+            </div>
+            <div class="property-info">
+              <h3>Investment Land</h3>
+              <p>Explore land opportunities for your property portfolio.</p>
+              <div class="price">Contact for Price</div>
+              <a class="property-link" href="#contact">Enquire About This Property →</a>
+            </div>
+          </article>
 
-        <article class="property">
-          <h3>Premium Properties</h3>
-          <p>Discover properties suited to your goals.</p>
-          <p class="price">Contact for price</p>
-          <a href="#contact">Make an enquiry</a>
-        </article>
+          <article class="property">
+            <div class="property-top">
+              <span>Premium</span>
+            </div>
+            <div class="property-info">
+              <h3>Premium Properties</h3>
+              <p>Discuss available options that align with your objectives.</p>
+              <div class="price">Contact for Price</div>
+              <a class="property-link" href="#contact">Enquire About This Property →</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="about">
-      <h2>Property Decisions Start With Information</h2>
-      <p>
-        We help prospective buyers explore property options
-        and take the next step with greater confidence.
-      </p>
+      <div class="container about-content">
+        <div class="section-heading">
+          <p class="eyebrow">Why Work With Us?</p>
+          <h2>Make Your Next Property Decision With Confidence.</h2>
+        </div>
+
+        <p>
+          Finding the right property starts with clear information.
+          Our team is here to help you understand available options,
+          ask the right questions, and take your next step.
+        </p>
+
+        <a class="button" href="#contact">Talk to Our Team</a>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2 class="section-title">Interested in a Property?</h2>
-      <p style="text-align:center">
-        Contact our team to learn more about available properties.
-      </p>
-      <p style="text-align:center">
-        <a class="button" href="mailto:hello@example.com">
-          Send an Enquiry
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Ready to Explore Your Options?</h2>
+        <p>
+          Tell us what you are looking for and let our team help
+          you find a property that fits your needs.
+        </p>
+
+        <!-- Replace the example email with your client's real email. -->
+        <a class="button" href="mailto:hello@example.com?subject=Property%20Enquiry">
+          Make an Enquiry
         </a>
-      </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Prime Estates. All rights reserved.</p>
+    <div class="container">
+      <p>© 2026 Prime Estates. All rights reserved.</p>
+    </div>
   </footer>
-
 </body>
 </html>
-
